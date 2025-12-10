@@ -1,0 +1,73 @@
+<!-- Form Open Search -->
+<div class="centered-form">
+  <dynamic-icon-form
+    [formGroup]="formGroupOpenSearch"
+    [formTitle]="formTitleOpenSearch"
+    [dynamicIconFields]="dynamicIconFieldsOpenSearch"
+    [enableButtons]="false"
+    (getFormGroup)=" setInitialFormGroupOpenSearch($event)">
+  </dynamic-icon-form>
+</div>
+
+<!-- Form Search -->
+<div class="centered-form" *ngIf="enableFormGroupSearch">
+  <dynamic-icon-form
+    [formGroup]="formGroupSearch"
+    [formTitle]="formTitleSearch"
+    [dynamicIconFields]="dynamicIconFieldsSearch"
+    (getFormGroup)=" setInitialFormGroupSearch($event)"
+    (submitEvent)=" setSubmitEventFormGroupSearch()"
+    (clearEvent)=" setClearEventFormGroupSearch()">
+  </dynamic-icon-form>
+</div>
+
+<!-- Table -->
+<div class="centered-table">
+  <dynamic-tree-table
+    [tableTitle]="tableTitle"
+    [id]="id"
+    [loading]="loading"
+    [scrollable]="scrollable"
+    [paginator]="paginator"
+    [rowsScope]="rowsScope"
+    [data]="data"
+    [headerColumns]="headerColumns"
+    [disableEditMode]="true"
+    [disableRemoveMode]="true"
+    [optionalAction]="true"
+    (getData)="setInitialData($event)"
+    (optionalEvent)="setOptionalEventTreeTable($event)">
+  </dynamic-tree-table>
+  <!-- Sub Table -->
+  <ng-container *ngIf="visibleSubTable">
+    <!-- [modal]="true" is mean background as bur -->
+    <p-dialog
+      [header]="tableTitleSubTable"
+      [modal]="true"
+      [(visible)]="visibleSubTable"
+      [style]="{ width: '100rem' }">
+      <dynamic-tree-table
+        [id]="idSubTable"
+        [loading]="loadingSubTable"
+        [scrollable]="scrollableSubTable"
+        [paginator]="paginatorSubTable"
+        [rowsScope]="rowsScopeSubTable"
+        [data]="dataSubTable"
+        [disableMode]="true"
+        [headerColumns]="headerColumnsSubTable"
+        (getData)="setInitialDataSubTable($event)">
+      </dynamic-tree-table>
+    </p-dialog>
+  </ng-container>
+</div>
+
+
+<!-- Dialog Popup  -->
+<dynamic-dialog-confirm
+  [visible]="visibleConfirm"
+  [draggable]="draggableConfirm"
+  [resizable]="resizableConfirm"
+  [dynamicDialogConfirm]="dynamicDialogConfirm"
+  (okEvent)="setOkEventDialogConfirm()"
+  (closeEvent)="setCloseEventDialogConfirm()">
+</dynamic-dialog-confirm>
