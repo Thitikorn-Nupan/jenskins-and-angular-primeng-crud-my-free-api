@@ -29,16 +29,16 @@ pipeline {
             }
 
 
-            stage('Before build docker container ui') {
-                steps {
-                   sh "npm run build"
-                }
-                post {
-                     success {
-                         echo 'After build on local successfully.'
-                     }
-                }
-            }
+//             stage('Before build docker container ui') {
+//                 steps {
+//                    sh "npm run build"
+//                 }
+//                 post {
+//                      success {
+//                          echo 'After build on local successfully.'
+//                      }
+//                 }
+//             }
 
             stage('Build docker container ui') {
                 steps {
