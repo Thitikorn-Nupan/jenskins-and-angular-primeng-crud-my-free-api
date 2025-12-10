@@ -28,19 +28,18 @@ pipeline {
                 }
             }
 
-
-            stage('Before build docker container ui') {
-                steps {
-                   // this case terminal can't run build
-                   // bat (Windows Batch Command): This step is used to execute Windows batch commands or scripts on Windows operating system
-                   bat "npm run build"
-                }
-                post {
-                     success {
-                         echo 'After build on local successfully.'
-                     }
-                }
-            }
+// bug fix later
+//             stage('Before build docker container ui') {
+//                 steps {
+//                    // this case terminal can't run build
+//                    sh "npm run build"
+//                 }
+//                 post {
+//                      success {
+//                          echo 'After build on local successfully.'
+//                      }
+//                 }
+//             }
 
             stage('Build docker container ui') {
                 steps {
